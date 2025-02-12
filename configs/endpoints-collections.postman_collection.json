@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "4d0660a2-1102-48ba-b0f0-a06d694ab130",
+		"name": "API-VENTAS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "12536023"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Cristian",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Luna",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "cluna-2023308",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "cluna-2023308@kinal.edu.gt",
+									"type": "text"
+								},
+								{
+									"key": "NIT",
+									"value": "123456-8",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Messi10-",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN_ROLE",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "postman-cloud:///1ef4dc1f-9b79-4680-a529-ea114dc8ffeb"
+								}
+							]
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"cluna-2023308@kinal.edu.gt\",\n  \"password\": \"Messi10-\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/auth/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Buscar un usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [], 
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/findUser/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar ususario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/deleteUser/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+                {
+					"name": "Eliminar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+						],
+                        "body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"cluna-2023308@kinal.edu.gt\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/deleteClient/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar contraseña",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"newPassword\"n \"Lamine-yamal19\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/updatePassword/679cef6b0a9ac952c4552d76"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar foto de perfil",
+					"request":{
+						"method": "PATCH",
+						"header": [],
+							"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "postman-cloud:///1ef4dc1f-9b79-4680-a529-ea114dc8ffeb"
+								}
+							]
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/updateProfilePicture/679cef6b0a9ac952c4552d76"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Randy",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Oscal",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "roscal-2023111",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "roscal-2023111@kinal.edu.gt",
+									"type": "text"
+								},
+								{
+									"key": "NIT",
+									"value": "126541-7",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Neymar11-",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN_ROLE",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "postman-cloud:///1ef4dc1f-9b79-4680-a529-ea114dc8ffeb"
+								}
+							]
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/updateUser/679cedc00c50f098afb74105"
+					},
+					"response": []
+				}
+			]
+		}
+    ]
+}
