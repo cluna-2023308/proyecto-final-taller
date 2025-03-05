@@ -1,0 +1,63 @@
+[{
+  "_id": {
+    "$oid": "679cedc00c50f098afb74105"
+  },
+  "name": "categoryDefault",
+  "description": "Categoria por defecto a productos sin categoria",
+  "typeCategory": "OTHER_CATEGORY",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c45bf1d570463ae7388b"
+  },
+  "name": "Gamer",
+  "description": "Categoria de productos gamer",
+  "typeCategory": "ELECTRONIC_CATEGORY",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c471f1d570463ae7388e"
+  },
+  "name": "Electrodomesticos",
+  "description": "Categoria de productos Electrodomesticos",
+  "typeCategory": "ELECTRONIC_CATEGORY",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c5fa1e2cd95d98f0d758"
+  },
+  "name": "Discos",
+  "description": "Categoria de discos de vinil",
+  "typeCategory": "MUSIC_CATEGORY",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c6311e2cd95d98f0d75b"
+  },
+  "name": "Video",
+  "description": "Categoria de video",
+  "typeCategory": "HOME_CATEGORY",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c6571e2cd95d98f0d75e"
+  },
+  "name": "Play Station",
+  "description": "Categoria de play station SONY",
+  "typeCategory": "VIDEOGAME_CATEGORY",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c69d1e2cd95d98f0d761"
+  },
+  "name": "Nintendo",
+  "description": "Categoria de Nintendo",
+  "typeCategory": "VIDEOGAME_CATEGORY",
+  "status": true
+}]

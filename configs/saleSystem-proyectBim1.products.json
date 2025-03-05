@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "67c8c6e81e2cd95d98f0d767"
+  },
+  "name": "Laptop",
+  "description": "Computadora portátil de última generación",
+  "stock": 10,
+  "price": 1500.99,
+  "category": {
+    "$oid": "67c8c45bf1d570463ae7388b"
+  },
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c7261e2cd95d98f0d76a"
+  },
+  "name": "Play Station 5",
+  "description": "Es una consola de videojuegos de última generación",
+  "stock": 9,
+  "price": 5000.99,
+  "category": {
+    "$oid": "67c8c6571e2cd95d98f0d75e"
+  },
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c7381e2cd95d98f0d76d"
+  },
+  "name": "Play Station 4",
+  "description": "Es una consola de videojuegos de pasada generación",
+  "stock": 12,
+  "price": 3000.99,
+  "category": {
+    "$oid": "67c8c6571e2cd95d98f0d75e"
+  },
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c76f1e2cd95d98f0d770"
+  },
+  "name": "Nintendo Switch",
+  "description": "Es una consola de videojuegos muy divertida",
+  "stock": 12,
+  "price": 4000.99,
+  "category": {
+    "$oid": "67c8c69d1e2cd95d98f0d761"
+  },
+  "status": true
+}]

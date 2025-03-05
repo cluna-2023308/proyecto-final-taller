@@ -4,7 +4,7 @@ import User from "../user/user.model.js";
 
 export const generateInvoice = async (req, res) => {
     try {
-      const { cartId } = req.params; // Obtener cartId desde la URL
+      const { cartId } = req.params;
       const cart = await Cart.findById(cartId).populate("products.product");
   
       if (!cart) {
@@ -34,7 +34,6 @@ export const generateInvoice = async (req, res) => {
   
       doc.pipe(res);
   
-      // Encabezado de la factura
       doc.fontSize(18).text("Factura de la Compra", { align: "center" });
       doc.moveDown();
   
@@ -49,18 +48,17 @@ export const generateInvoice = async (req, res) => {
       let total = 0;
       
       for (let item of cart.products) {
-        const product = item.product; // Producto ya populado
+        const product = item.product;
         if (product) {
           const subTotal = product.price * item.quantity;
           total += subTotal;
   
-          // Escribir producto en la factura
           doc.text(
             `${product.name} - Cantidad: ${item.quantity} - Subtotal: Q${subTotal.toFixed(2)}`,
             { align: "left" }
           );
   
-          // **Reducir stock del producto**
+          // Reduce el stock del producto
           if (product.stock >= item.quantity) {
             product.stock -= item.quantity;
             await product.save();
@@ -78,7 +76,7 @@ export const generateInvoice = async (req, res) => {
   
       doc.end();
   
-      // **Vaciar el carrito después de la compra**
+      // Vacia el carrito después de la compra
       cart.products = [];
       cart.totalPrice = 0;
       await cart.save();

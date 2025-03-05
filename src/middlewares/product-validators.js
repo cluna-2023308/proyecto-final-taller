@@ -18,7 +18,6 @@ export const createProductValidator = [
 
 export const getProductValidator = [
     validateJWT,
-    hasRoles("ADMIN_ROLE, CLIENT_ROLE")
 ]
 
 export const updateProductValidator = [

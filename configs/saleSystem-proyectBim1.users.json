@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "67c8c3e8cb7b335608a93f26"
+  },
+  "name": "Cristian",
+  "surname": "Luna",
+  "username": "cluna-2023308",
+  "email": "cluna-2023308@kinal.edu.gt",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$YvJNW3ClPcpQaoQG/wr+Jg$YJFOqwgF0E9cQ5li61VmXgJU+iIPaQHDbEaF/gaf1Rg",
+  "profilePicture": null,
+  "NIT": "123456-8",
+  "role": "CLIENT_ROLE",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c8c409f1d570463ae73885"
+  },
+  "name": "Super",
+  "surname": "Admin",
+  "username": "SuperAdmin",
+  "email": "superadmin@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$hMufCa3nX87bGnPmQA4tsA$/uAMYslwD5faffMpnISIQUBmjyAIkAb3Ed1lvOrgJy4",
+  "profilePicture": null,
+  "NIT": "123456-7",
+  "role": "ADMIN_ROLE",
+  "status": true
+}]
