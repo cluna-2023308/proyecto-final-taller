@@ -36,5 +36,5 @@ USUARIOS Y CONTRASEÑAS:
     "email": "superadmin@gmail.com",
     "password": "Admin123-"
   USER CLIENT:
-  "email": "cluna-2023308@kinal.edu.gt",
-  "password": "Messi10-"
+    "email": "cluna-2023308@kinal.edu.gt",
+    "password": "Messi10-"
