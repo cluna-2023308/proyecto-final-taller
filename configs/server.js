@@ -7,8 +7,11 @@ import morgam from "morgan"
 import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
+import categoryRoutes from "../src/category/category.routes.js"
+import productRoutes from "../src/product/product.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import createAdminUser from "../src/auth/auth.controller.js"
+import createCategoryDefault from "../src/category/category.controller.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
@@ -22,6 +25,8 @@ const middlewares = (app) => {
 const routes = (app) =>{
     app.use("/saleSystem/v1/auth", authRoutes)
     app.use("/saleSystem/v1/user", userRoutes)
+    app.use("/saleSystem/v1/category", categoryRoutes)
+    app.use("/saleSystem/v1/product", productRoutes)
 }
 
 
@@ -37,6 +42,7 @@ export const initServer = () => {
     const app = express()
     try{
         createAdminUser()
+        createCategoryDefault()
         middlewares(app)
         conectarDB()
         routes(app)

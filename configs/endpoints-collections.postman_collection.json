@@ -243,6 +243,272 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Agregar Categoria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Gamer\",\n  \"description\": \"Categoria de productos gamer\",\n  \"typeCategory\": \"ELECTRONIC_CATEGORY\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/category/createCategory"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3002/saleSystem/v1/category/"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Categoria",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Electrodomesticos\",\n  \"description\": \"Categoria para objetos electronicos del hogar\",\n  \"typeCategory\": \"ELECTRONIC_CATEGORY\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/category/updateCategory/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						], 
+						"url": "http://127.0.0.1:3002/saleSystem/v1/category/deleteCategory/679cedc00c50f098afb74105"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Agregar Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Laptop\",\n  \"description\": \"Computadora portátil de última generación\",\n  \"stock\": 10,\n  \"price\": 1500.99,\n  \"category\": \"603d2149e7f1a2b1c8efb123\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/product/createProduct"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3002/saleSystem/v1/product/"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Producto",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Smartphone\",\n  \"description\": \"Teléfono inteligente de alta gama\",\n  \"stock\": 20,\n  \"price\": 999.99,\n  \"category\": \"603d2149e7f1a2b1c8efb123\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/product/updateProduct/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Producto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:3002/saleSystem/v1/product/deleteProduct/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar producto por nombre de producto",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:3002/saleSystem/v1/product/searchProductByName?name",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3002",
+							"path": [
+								"saleSystem",
+								"v1",
+								"product",
+								"searchProductByName"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Laptop"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar producto por typeCategory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:3002/saleSystem/v1/product/searchProductsByTypeCategory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3002",
+							"path": [
+								"saleSystem",
+								"v1",
+								"product",
+								"searchProductsByTypeCategory"
+							],
+							"query": [
+								{
+									"key": "typeCategory",
+									"value": "OTHER_CATEGORY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Productos con Filtro",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:3002/saleSystem/v1/product/listProductsFilter",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3002",
+							"path": [
+								"saleSystem",
+								"v1",
+								"product",
+								"listProductsFilter"
+							],
+							"query": [
+								{
+									"key": "FilterFor",
+									"value": "A-Z"
+								},
+								{
+									"key": "FilterFor",
+									"value": "Z-A"
+								},
+								{
+									"key": "FilterFor",
+									"value": "priceAscendant"
+								},
+								{
+									"key": "FilterFor",
+									"value": "priceDescendant"
+								},
+								{
+									"key": "FilterFor",
+									"value": "category"
+								},
+								{
+									"key": "categorySpecific",
+									"value": "categoryDefault"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
+		
     ]
 }
