@@ -1,4 +1,4 @@
-import { hash } from "argon2";
+import { hash, verify } from "argon2";
 import User from "./user.model.js"
 import fs from "fs/promises"
 import { join, dirname } from "path"
@@ -74,11 +74,21 @@ export const deleteClient = async (req, res) => {
         if (!usuario || usuario.role !== "ADMIN_ROLE") {
             return res.status(401).json({
                 success: false,
-                message: "Acceso denegado. Se requiere el rol de ADMIN_ROLE."
+                message: "Acceso denegado. Se requiere el rol de ADMIN_ROLE"
             });
         }
 
-        const user = await User.findByIdAndUpdate(uid, { status: false }, { new: true });
+        const user = await User.findById(uid);
+        
+        if (user.role === "ADMIN_ROLE") {
+            return res.status(403).json({
+                success: false,
+                message: "No se puede eliminar un usuario con rol ADMIN_ROLE"
+            });
+        }
+
+        user.status = false;
+        await user.save();
 
         return res.status(200).json({
             success: true,
@@ -96,54 +106,93 @@ export const deleteClient = async (req, res) => {
 };
 
 export const updateClient = async (req, res) => {
+    const { usuario } = req;
+    const { uid } = req.params;
+    const { name, surname, username, email, password, NIT } = req.body;
+
+    if (!usuario || usuario.role !== "ADMIN_ROLE") {
+        return res.status(401).json({
+            success: false,
+            message: "Acceso denegado. Se requiere el rol de ADMIN_ROLE"
+        });
+    }
+
+    try {
+        const user = await User.findById(uid);
+
+        if (user.role === "ADMIN_ROLE") {
+            return res.status(403).json({
+                success: false,
+                message: "No se puede editar un usuario con rol ADMIN_ROLE"
+            });
+        }
+
+        const updatedFields = {};
+        if (name) updatedFields.name = name;
+        if (surname) updatedFields.surname = surname;
+        if (username) updatedFields.username = username;
+        if (email) updatedFields.email = email;
+        if (password) {
+            updatedFields.password = await argon2.hash(password);
+        }
+        if (NIT) updatedFields.NIT = NIT;
+
+        updatedFields.updatedAt = new Date();
+
+        Object.assign(user, updatedFields);
+        await user.save();
+
+        return res.status(200).json({
+            message: "Usuario actualizado exitosamente.",
+            user: {
+                name: user.name,
+                surname: user.surname,
+                username: user.username,
+                email: user.email,
+                NIT: user.NIT,
+            },
+        });
+    } catch (err) {
+        return res.status(500).json({
+            message: "Error al actualizar el usuario.",
+            error: err.message,
+        });
+    }
+};
+
+export const updateRoleAdmin = async (req, res) => {
     try {
         const { usuario } = req;
         const { uid } = req.params;
-        const data = req.body;
 
         if (!usuario || usuario.role !== "ADMIN_ROLE") {
             return res.status(401).json({
                 success: false,
-                message: "Acceso denegado. Se requiere el rol de ADMIN_ROLE."
+                message: "Acceso denegado. Se requiere el rol de ADMIN_ROLE"
             });
         }
 
-        if (Object.keys(data).length === 0) {
-            return res.status(400).json({
-                success: false,
-                message: "No se enviaron datos para actualizar"
-            });
-        }
+        const user = await User.findById(uid);
 
-        const user = await User.findByIdAndUpdate(uid, data, { 
-            new: true, 
-            runValidators: true 
-        });
+        user.role = "ADMIN_ROLE";
+        await user.save();
 
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                message: "Usuario no encontrado"
-            });
-        }
-
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
-            msg: 'Usuario Actualizado',
-            user,
+            message: "El rol del usuario a hizo actualizado a ADMIN_ROLE",
+            user
         });
+
     } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
-            msg: 'Error al actualizar usuario',
+            message: "No se pudo actualizar el rol del usuario",
             error: err.message
         });
     }
 };
 
-
 // CLIENT AND ADMIN ROLE METHODS -------------------------
-
 export const updatePassword = async (req, res) => {
     try{
         const { uid } = req.params
@@ -194,47 +243,6 @@ export const updatePassword = async (req, res) => {
     }
 }
 
-export const deleteUser = async (req, res) => {
-    try{
-        const { usuario } = req
-        
-        const user = await User.findByIdAndUpdate(usuario.uid, {status: false}, {new: true})
-
-        return res.status(200).json({
-            success: true,
-            message: "Usuario eliminado",
-            user
-        })
-    }catch(err){
-        return res.status(500).json({
-            success: false,
-            message: "Error al eliminar el usuario",
-            error: err.message
-        })
-    }
-}
-
-export const updateUser = async (req, res) => {
-    try {
-        const { uid } = req.params;
-        const  data  = req.body;
-
-        const user = await User.findByIdAndUpdate(uid, data, { new: true });
-
-        res.status(200).json({
-            success: true,
-            msg: 'Usuario Actualizado',
-            user,
-        });
-    } catch (err) {
-        res.status(500).json({
-            success: false,
-            msg: 'Error al actualizar usuario',
-            error: err.message
-        });
-    }
-}
-
 export const updateProfilePicture = async (req, res) => {
     try{
         const { uid } = req.params
@@ -270,3 +278,66 @@ export const updateProfilePicture = async (req, res) => {
         })
     }
 }
+
+export const deleteUser = async (req, res) => {
+    try{
+        const usuario = req.usuario._id;
+        
+        const user = await User.findByIdAndUpdate(usuario, {status: false}, {new: true})
+
+        return res.status(200).json({
+            success: true,
+            message: "Usuario eliminado",
+            user
+        })
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al eliminar el usuario",
+            error: err.message
+        })
+    }
+}
+
+export const updateUser = async (req, res) => {
+    const id = req.usuario._id;
+    const { name, surname, username, email, password, NIT } = req.body;
+
+    try {
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+
+        const updatedFields = {};
+        if (name) updatedFields.name = name;
+        if (surname) updatedFields.surname = surname;
+        if (username) updatedFields.username = username;
+        if (email) updatedFields.email = email;
+        if (password) {
+            updatedFields.password = await argon2.hash(password);
+        }
+        if (NIT) updatedFields.NIT = NIT;
+
+        updatedFields.updatedAt = new Date();
+
+        Object.assign(user, updatedFields);
+        await user.save();
+
+        return res.status(200).json({
+            message: "Usuario actualizado exitosamente.",
+            user: {
+                name: user.name,
+                surname: user.surname,
+                username: user.username,
+                email: user.email,
+                NIT: user.NIT,
+            },
+        });
+    } catch (err) {
+        return res.status(500).json({
+            message: "Error al actualizar el usuario.",
+            error: err.message,
+        });
+    }
+};

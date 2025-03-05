@@ -1,24 +1,28 @@
 import { Router } from "express"
-import { getUserById, getUsers, deleteUser, updatePassword, updateUser, updateProfilePicture, deleteClient, updateClient } from "./user.controller.js"
-import { getUserByIdValidator, deleteUserValidator, updatePasswordValidator, updateUserValidator, updateProfilePictureValidator, getUsersValidator, deleteClientValidator, updateClientValidator } from "../middlewares/user-validators.js"
+import { getUserById, getUsers, deleteUser, updatePassword, updateUser, updateProfilePicture, deleteClient, updateClient, updateRoleAdmin } from "./user.controller.js"
+import { getUserByIdValidator, deleteUserValidator, updatePasswordValidator, updateUserValidator, updateProfilePictureValidator, getUsersValidator, deleteClientValidator, updateClientValidator, updateRoleAdminValidator } from "../middlewares/user-validators.js"
 import { uploadProfilePicture } from "../middlewares/multer-uploads.js"
 
 const router = Router()
 
-router.get("/findUser/:uid", getUserByIdValidator, getUserById)
-
+// Routes de ADMIN
 router.get("/", getUsersValidator, getUsers)
+
+router.get("/findUser/:uid", getUserByIdValidator, getUserById)
 
 router.delete("/deleteClient/:uid", deleteClientValidator, deleteClient)
 
 router.put("/updateClient/:uid", updateClientValidator, updateClient)
 
-router.delete("/deleteUser/:uid", deleteUserValidator, deleteUser)
+router.patch("/updateRoleAdmin/:uid", updateRoleAdminValidator, updateRoleAdmin)
 
+// Routes de CLIENT and ADMIN
 router.patch("/updatePassword/:uid", updatePasswordValidator, updatePassword)
 
 router.patch("/updateProfilePicture/:uid", uploadProfilePicture.single("profilePicture"),  updateProfilePictureValidator, updateProfilePicture)
 
-router.put("/updateUser/:uid", updateUserValidator, updateUser)
+router.delete("/deleteUser", deleteUserValidator, deleteUser)
+
+router.put("/updateUser", updateUserValidator, updateUser)
 
 export default router

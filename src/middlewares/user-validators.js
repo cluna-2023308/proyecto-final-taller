@@ -34,6 +34,10 @@ export const loginValidator = [
 ]
 
 // VALIDATORS FOR ADMINS
+export const getUsersValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE")
+]
 
 export const getUserByIdValidator = [
     validateJWT,
@@ -41,11 +45,6 @@ export const getUserByIdValidator = [
     param("uid").custom(userExists),
     validarCampos,
     handleErrors
-]
-
-export const getUsersValidator = [
-    validateJWT,
-    hasRoles("ADMIN_ROLE")
 ]
 
 export const deleteClientValidator = [
@@ -64,8 +63,15 @@ export const updateClientValidator = [
     handleErrors
 ]
 
-// VALIDATORS FOR CLIENTS AND ADMINS
+export const updateRoleAdminValidator = [
+    validateJWT,
+    param("uid", "No es un ID válido").isMongoId(),
+    param("uid").custom(userExists),
+    validarCampos,
+    handleErrors
+]
 
+// VALIDATORS FOR CLIENTS AND ADMINS
 export const updatePasswordValidator = [
     param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
     param("uid").custom(userExists),
@@ -84,18 +90,12 @@ export const updateProfilePictureValidator = [
 
 export const deleteUserValidator = [
     validateJWT,
-    hasRoles("ADMIN_ROLE"),
-    param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
-    param("uid").custom(userExists),
     validarCampos,
     handleErrors
 ]
 
 export const updateUserValidator = [
     validateJWT,
-    hasRoles("ADMIN_ROLE"),
-    param("uid", "No es un ID válido").isMongoId(),
-    param("udi").custom(userExists),
     validarCampos,
     handleErrors
 ]

@@ -144,56 +144,30 @@
 					"response": []
 				},
 				{
-					"name": "Actualizar cliente por su ID",
+					"name": "Actualizar un cliente",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Randy",
-									"type": "text"
-								},
-								{
-									"key": "surname",
-									"value": "Oscal",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "roscal-2023111",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "roscal-2023111@kinal.edu.gt",
-									"type": "text"
-								},
-								{
-									"key": "NIT",
-									"value": "126541-7",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Neymar11-",
-									"type": "text"
-								},
-								{
-									"key": "role",
-									"value": "ADMIN_ROLE",
-									"type": "text"
-								},
-								{
-									"key": "profilePicture",
-									"type": "file",
-									"src": "postman-cloud:///1ef4dc1f-9b79-4680-a529-ea114dc8ffeb"
-								}
-							]
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Randy\",\n  \"surname\": \"Oscal\",\n  \"username\": \"roscal-2023308\",\n  \"email\": \"roscal-2023308@kinal.edu.gt\",\n  \"NIT\": \"126541-7\"\n}"
 						},
-						"url": "http://127.0.0.1:3002/saleSystem/v1/user/updateUser/679cedc00c50f098afb74105"
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/updateClient/679cef6b0a9ac952c4552d76"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar role ADMIN",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/updateRoleAdmin/679cef6b0a9ac952c4552d76"
 					},
 					"response": []
 				}
@@ -245,7 +219,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://127.0.0.1:3002/saleSystem/v1/user/deleteUser/679cedc00c50f098afb74105"
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/deleteUser"
 					},
 					"response": []
 				},
@@ -253,53 +227,18 @@
 					"name": "Actualizar usuario",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Randy",
-									"type": "text"
-								},
-								{
-									"key": "surname",
-									"value": "Oscal",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "roscal-2023111",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "roscal-2023111@kinal.edu.gt",
-									"type": "text"
-								},
-								{
-									"key": "NIT",
-									"value": "126541-7",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Neymar11-",
-									"type": "text"
-								},
-								{
-									"key": "role",
-									"value": "ADMIN_ROLE",
-									"type": "text"
-								},
-								{
-									"key": "profilePicture",
-									"type": "file",
-									"src": "postman-cloud:///1ef4dc1f-9b79-4680-a529-ea114dc8ffeb"
-								}
-							]
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Randy\",\n  \"surname\": \"Oscal\",\n  \"username\": \"roscal-2023308\",\n  \"email\": \"roscal-2023308@kinal.edu.gt\",\n  \"NIT\": \"126541-7\"\n}"
 						},
-						"url": "http://127.0.0.1:3002/saleSystem/v1/user/updateUser/679cedc00c50f098afb74105"
+						"url": "http://127.0.0.1:3002/saleSystem/v1/user/updateUser"
 					},
 					"response": []
 				}
