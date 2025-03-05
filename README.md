@@ -1,5 +1,6 @@
 # proyecto-final-taller
 Repositorio del proyecto final de taller
+
 OBSERVACIONES:
 
 - AUTH:
@@ -32,9 +33,13 @@ OBSERVACIONES:
   A estas rutas solo puede acceder los usuarios con role ADMIN_ROLE y CLIENT_ROL, el usuario se envia mediante el token
 
 USUARIOS Y CONTRASEÑAS:
+
+
   SUPER ADMIN:
     "email": "superadmin@gmail.com",
     "password": "Admin123-"
+
+    
   USER CLIENT:
     "email": "cluna-2023308@kinal.edu.gt",
     "password": "Messi10-"
