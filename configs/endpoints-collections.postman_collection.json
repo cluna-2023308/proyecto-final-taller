@@ -508,7 +508,88 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Agregar Producto al Carrito",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"67c7e326ab73a398fa53f245\",\n  \"quantity\": \"3\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/cart/addCart"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Producto en el Carrito",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"67c7e326ab73a398fa53f245\",\n  \"quantity\": \"5\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/cart/updateCart"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Producto del Carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"67c7e326ab73a398fa53f245\"\n}"
+						},
+						"url": "http://127.0.0.1:3002/saleSystem/v1/cart/removeCart"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Generar PDF de la factura",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:3002/saleSystem/v1/invoice/generatePDF/67c8772784a92ee623c23a77"
+					},
+					"response": []
+				}
+			]
 		}
-		
     ]
 }

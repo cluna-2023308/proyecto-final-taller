@@ -9,6 +9,8 @@ import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
 import categoryRoutes from "../src/category/category.routes.js"
 import productRoutes from "../src/product/product.routes.js"
+import cartRoutes from "../src/cart/cart.routes.js"
+import invoiceRoutes from "../src/invoice/invoice.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import createAdminUser from "../src/auth/auth.controller.js"
 import createCategoryDefault from "../src/category/category.controller.js"
@@ -27,6 +29,8 @@ const routes = (app) =>{
     app.use("/saleSystem/v1/user", userRoutes)
     app.use("/saleSystem/v1/category", categoryRoutes)
     app.use("/saleSystem/v1/product", productRoutes)
+    app.use("/saleSystem/v1/cart", cartRoutes)
+    app.use("/saleSystem/v1/invoice", invoiceRoutes)
 }
 
 

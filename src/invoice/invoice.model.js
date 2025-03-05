@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const carSchema =  Schema({
+const invoiceSchema = Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -16,14 +16,21 @@ const carSchema =  Schema({
       quantity: {
         type: Number,
         required: true,
-        min: 1,
+      },
+      price: {
+        type: Number,
+        required: true,
       },
     },
   ],
-  totalPrice: {
+  totalAmount: {
     type: Number,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-export default model("Car", carSchema);
+export default model("Invoice", invoiceSchema);
