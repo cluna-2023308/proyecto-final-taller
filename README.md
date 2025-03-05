@@ -8,6 +8,7 @@ OBSERVACIONES:
   /Login: todo usuario registrado se puede loguear
 
 - USER:
+- 
   ADMIN_ROLE:
   
     /: Se envia por token un usuario con rol ADMIN_ROLE
